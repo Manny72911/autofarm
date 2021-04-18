@@ -1,0 +1,118 @@
+local notifSound = Instance.new("Sound",workspace)
+notifSound.PlaybackSpeed = 1.5
+notifSound.Volume = 0.15
+notifSound.SoundId = "rbxassetid://170765130"
+notifSound.PlayOnRemove = true
+notifSound:Destroy()
+game.StarterGui:SetCore("SendNotification", {Title = "SAAGT", Text = "Thanks For Using Stay Alive And Get Time's Autofarm. This was made by draxe#1000 thanks for using are services.", Icon = "rbxassetid://505845268", Duration = 25, Button1 = "Okay"})
+local Controller = require(game.Players.LocalPlayer:WaitForChild("PlayerScripts"):WaitForChild("PlayerModule")):GetControls() Controller:Disable()
+
+game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-37, -16, 12))
+
+
+local part = game.Workspace.Spawn.SpawnParts
+part:Destroy()
+
+local vu = game:GetService("VirtualUser")
+game:GetService("Players").LocalPlayer.Idled:connect(function()
+   vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+   wait(1)
+   vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+end)
+
+game:GetService('Players').PlayerAdded:Connect(function(player)
+	player.CharacterAdded:Connect(function(character)
+		character:WaitForChild("Humanoid").Died:Connect(function()
+local HttpService, TPService = game:GetService"HttpService", game:GetService"TeleportService";
+local OtherServers = HttpService:JSONDecode(game:HttpGet("https://games.roblox.com/v1/games/"..game.PlaceId.."/servers/Public?sortOrder=Asc&limit=100"))
+for Index, Server in next, OtherServers["data"] do
+   if Server ~= game.JobId then
+       print(Server["6600422195"])
+       TPService:TeleportToPlaceInstance(game.PlaceId, Server["6600422195"])
+       break
+      end
+    end
+   end)
+ end)
+end)
+Local = game:GetService('Players').LocalPlayer
+Char  = Local.Character
+touched,tpdback = false, false
+Local.CharacterAdded:connect(function(char)
+    if script.Disabled ~= true then
+        wait(.25)
+        loc = Char.HumanoidRootPart.Position
+        Char:MoveTo(box.Position + Vector3.new(0,.5,0))
+    end
+end)
+game:GetService('UserInputService').InputBegan:connect(function(key)
+    if key.KeyCode == Enum.KeyCode.Equals then
+        if script.Disabled ~= true then
+            script.Disabled = true
+            print'you may re-execute'
+        end
+    end
+end)
+box = Instance.new('Part',workspace)
+box.Anchored = true
+box.CanCollide = true
+box.Size = Vector3.new(10,1,10)
+box.Position = Vector3.new(0,10000,0)
+box.Touched:connect(function(part)
+    if (part.Parent.Name == Local.Name) then
+        if touched == false then
+            touched = true
+            function apply()
+                if script.Disabled ~= true then
+                    no = Char.HumanoidRootPart:Clone()
+                    wait(.25)
+                    Char.HumanoidRootPart:Destroy()
+                    no.Parent = Char
+                    Char:MoveTo(loc)
+                    touched = false
+                end end
+            if Char then
+                apply()
+            end
+        end
+    end
+end)
+repeat wait() until Char
+loc = Char.HumanoidRootPart.Position
+Char:MoveTo(box.Position + Vector3.new(0,.5,0))
+local hoes = {
+    "359752057",
+    "903779281",
+    "1051007560",
+    "2246591041",
+    "1429140439",
+    "244771808",
+    "626812758",
+    "166107934",
+    "1489847",
+    "121654024",
+    "80810774",
+    "2022958511",
+    "1013966414",
+    "1489882402",
+    "1759233664",
+    "428521584",
+    "254696812",
+}    
+
+for l, c in pairs(game.Players:GetChildren()) do
+for i, v in pairs(hoes) do
+if c.UserId == v then
+local Vanis = game.Players.LocalPlayer
+Vanis:Kick("admin detected, gotta kick ya sorry")
+end
+end
+end
+game.Players.PlayerAdded:Connect(function(plr)
+for i, v in pairs(hoes) do
+if plr.UserId == v then
+local Vanis = game.Players.LocalPlayer
+Vanis:Kick("admin deteted, gotta kick ya sorry")
+end
+end
+end)
