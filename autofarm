@@ -103,16 +103,16 @@ local hoes = {
 for l, c in pairs(game.Players:GetChildren()) do
 for i, v in pairs(hoes) do
 if c.UserId == v then
-local Vanis = game.Players.LocalPlayer
-Vanis:Kick("admin detected, gotta kick ya sorry")
+local DaHoodHub = game.Players.LocalPlayer
+DaHoodHub:Kick("admin detected, gotta kick ya sorry")
 end
 end
 end
 game.Players.PlayerAdded:Connect(function(plr)
 for i, v in pairs(hoes) do
 if plr.UserId == v then
-local Vanis = game.Players.LocalPlayer
-Vanis:Kick("admin deteted, gotta kick ya sorry")
+local DaHoodHub = game.Players.LocalPlayer
+DaHoodHub:Kick("admin deteted, gotta kick ya sorry")
 end
 end
 end)
